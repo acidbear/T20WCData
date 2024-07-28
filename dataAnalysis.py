@@ -15,8 +15,8 @@ def namecheck(player):
     except KeyError:
         return player
     
-original_data = pd.read_csv("ICC_Cup_Data.csv")
-player_data = pd.read_csv("WCPlayersList.csv")
+original_data = pd.read_csv("csv files\ICC_Cup_Data.csv")
+player_data = pd.read_csv("csv files\WCPlayersList.csv")
 player_data = player_data.map(namecheck)
 for col in player_data.columns:
     player_data.loc[player_data[col].duplicated(),col] = np.NaN
