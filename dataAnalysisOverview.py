@@ -1,8 +1,6 @@
 import pandas as pd
 import numpy as np
-import seaborn as sns
 from matplotlib import pyplot as plt
-from IPython.display import display
 
 NAME_CHANGES = {
     "NR Sciver": "NR Sciver-Brunt",
@@ -188,8 +186,8 @@ bar_colours = {
 #             return k
 
     
-# player_achievements = original_data[['player_of_match','Team 1 Players','Team 2 Players','Team 1','Team 2']].copy().map(namecheck)
-# most_potms = (player_achievements['player_of_match'].value_counts()).nlargest(6,keep='all')
+player_achievements = original_data[['player_of_match','Team 1 Players','Team 2 Players','Team 1','Team 2']].copy().map(namecheck)
+most_potms = (player_achievements['player_of_match'].value_counts()).nlargest(6,keep='all')
 
 # valuesPOTM = most_potms.to_list()
 # coloursPOTM = [bar_colours[find_nationality(k)][0] for k in most_potms.index.to_list()]
@@ -206,21 +204,21 @@ bar_colours = {
 # rects = ax8b.bar(2*np.arange(len(labelsPOTM)) ,valuesPOTM ,1,color=coloursPOTM)
 # ax8b.bar_label(rects, labels=labelsPOTM, padding=3,rotation=60)
 
-# player_list = []
+player_list = []
 
-# def format(row):
-#     row['Team 1 Players'] = row['Team 1 Players'].split("'")
-#     row['Team 1 Players'] = [namecheck(r) for r in row['Team 1 Players'] if r[0].isalpha()]
-#     row['Team 2 Players'] = row['Team 2 Players'].split("'")
-#     row['Team 2 Players'] = [namecheck(r) for r in row['Team 2 Players'] if r[0].isalpha()]
+def format(row):
+    row['Team 1 Players'] = row['Team 1 Players'].split("'")
+    row['Team 1 Players'] = [namecheck(r) for r in row['Team 1 Players'] if r[0].isalpha()]
+    row['Team 2 Players'] = row['Team 2 Players'].split("'")
+    row['Team 2 Players'] = [namecheck(r) for r in row['Team 2 Players'] if r[0].isalpha()]
 
-#     player_list.append(pd.Series(row['Team 1 Players']))
-#     player_list.append(pd.Series(row['Team 2 Players']))
-#     return row
+    player_list.append(pd.Series(row['Team 1 Players']))
+    player_list.append(pd.Series(row['Team 2 Players']))
+    return row
 
-# get_player_list = player_achievements.apply(lambda x : format(x),axis = 1)
-# most_apps = (pd.concat(player_list,axis=0)).value_counts().nlargest(10,keep='all')
-
+get_player_list = player_achievements.apply(lambda x : format(x),axis = 1)
+most_apps = (pd.concat(player_list,axis=0)).value_counts().nlargest(10,keep='all')
+print(most_apps)
 # valuesAPPS = most_apps.to_list()
 # labelsAPPS = [f"{k}\n{bar_colours[find_nationality(k)][1]}" for k in most_apps.index.to_list()]
 # coloursAPPS = [bar_colours[find_nationality(k)][0] for k in most_apps.index.to_list()]
@@ -243,7 +241,6 @@ ax9a = subfigs[0].subplots()
 ax9b = subfigs[1].subplots()
 
 player_counts = player_data.count(axis=0)
-print(player_counts)
 labels = [bar_colours[j][1] for j in player_counts.index.to_list()]
 values = player_counts.to_list()
 colours = [bar_colours[j][0] for j in player_counts.index.to_list()]
@@ -261,4 +258,4 @@ for autotext in autotexts:
     autotext.set_color('orange')
     autotext.set_fontweight('bold')
 ax9b.set_title("Spread of nationalities of all players who have \nplayed at a T20 World Cup (since 2014)")
-plt.show()
+# plt.show()
