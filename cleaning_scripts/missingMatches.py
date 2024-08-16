@@ -63,5 +63,5 @@ run_additions_dict = {
 WICKET_ADDITIONS = pd.DataFrame.from_dict(wicket_additions_dict)
 RUN_ADDITIONS = pd.DataFrame.from_dict(run_additions_dict)
 
-WICKET_ADDITIONS.to_csv(path_or_buf="WICKET_ADDITIONS.csv",index=False)
-RUN_ADDITIONS.to_csv(path_or_buf="RUN_ADDITIONS.csv",index=False)
+# WICKET_ADDITIONS.to_csv(path_or_buf="WICKET_ADDITIONS.csv",index=False)
+# RUN_ADDITIONS.to_csv(path_or_buf="RUN_ADDITIONS.csv",index=False)
