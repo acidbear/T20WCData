@@ -1,4 +1,4 @@
-# Women's ICC T20 World Cups Data (2014-2013) 
+# Women's ICC T20 World Cups Data (2014-2023) 
 
  The ICC Women's T20 World Cup is a (generally) bi-annual international cricket tournament. This repo stores the files used in making some data visulisations for the tournaments taking place in 2014, 2016, 2018, 2020 and 2023, where I compared various statisics and trends across tournaments. I did this in two different ways, first by using general match overview data and then by using ball by ball data. 
 
